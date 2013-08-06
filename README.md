@@ -3,7 +3,7 @@ Data Structures and Algorithms in C++
 
 I'm reviewing some of my text books when I was learning data structures and algorithms.
 
-### With so many implementations in the internet, why another one?
+### With so many implementations, why another repository?
 
 * I decided to put my code here to keep track of my progress.
 * I like to solve programming problems. Put solutions to copy and paste it later
