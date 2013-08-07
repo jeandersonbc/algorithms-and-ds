@@ -51,7 +51,7 @@ void merge(int *A, int lo, int mid, int hi) {
  */
 void sort(int *A, int lo, int hi) {
 	if (lo < hi) {
-		int mid = lo + ((hi - lo) >> 2);
+		int mid = lo + ((hi - lo) >> 1);
 		sort(A, lo, mid);
 		sort(A, mid+1, hi);
 		merge(A, lo, mid, hi);
