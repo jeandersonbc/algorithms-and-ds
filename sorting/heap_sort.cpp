@@ -23,7 +23,9 @@
  *     - Since the heap is a complete binary tree, its height is lg(n). The
  *     implication of this is that any operation in a branch will be O(log(n))
  *
+ *
  *     Properties (using arrays):
+ *         - given a k-th element, any k > (heap_size / 2) is a LEAF
  *         - For the sake of simplicity, ROOT = A[1]
  *         - A.length    => # of values in the array
  *         - A.heap_size => # of values in the heap (0 <= A.heap_size <= A.length)
