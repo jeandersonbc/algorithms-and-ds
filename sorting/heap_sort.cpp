@@ -8,7 +8,9 @@
  */
 
 /* The HEAP data structure:
- *     - complete binary tree
+ *     - complete binary tree and elements have to be inserted from left to
+ *     right into the last level.
+ *
  *     - the root contains the larger (or minimum if it's a min-heap)
  *     - the value of internal node is higher (max-heap or less in the case
  *     of a min-heap) than its children: e.g. A[parent(i)] <= A[i] (min-heap)
