@@ -1,3 +1,5 @@
+#include <cstdio>
+
 /* Heap Sort
  *
  * Like INSERTION SORT, it's a in-place sorting algorithm
@@ -35,15 +37,12 @@
  * Building a HEAP: Since we have to iterate over a list of values (A) and just
  * adjust pointers O(1), it's a linear operation
  */
-struct heap {
-	int heap_size;
-	int n;
-	int *values;
+int heap_size;
+int *values;
 
-	inline int parent(int i) { return (i >> 1); }
-	inline int left(int i) { return (i << 1); }
-	inline int right(int i) { return (i << 1) + 1; }
-};
+inline int parent(int i) { return (i >> 1); }
+inline int left(int i) { return (i << 1); }
+inline int right(int i) { return (i << 1) + 1; }
 
 /* HEAPFY (max-heap)
  * 
@@ -56,20 +55,42 @@ struct heap {
  * from a node to the root. Worst case is that the node is a leaf, therefore
  * height = log(n).
  */
-void heapfy(struct heap &a, int i) {
-	int left = a.left(i);
-	int right = a.right(i);
+void heapfy(int *a, int i) {
+	int lft = left(i);
+	int rght = right(i);
 	int largest = i;
-	if (left < a.heap_size && a.values[i] < a.values[left])
-		largest = left;
-	if (right < a.heap_size && a.values[largest] < a.values[right])
-		largest = right;
+	if (lft <= heap_size && a[i] < a[lft])
+		largest = lft;
+	if (rght <= heap_size && a[largest] < a[rght])
+		largest = rght;
 	if (largest != i) {
-		int tmp = a.values[i];
-		a.values[i] = a.values[largest];
-		a.values[largest] = tmp; // A[largest] has the old A[i] value!
-		heapfy(a, largest);      // Needs to check if i is in the proper place
+		int tmp = a[i];
+		a[i] = a[largest];
+		a[largest] = tmp;   // A[largest] has the old A[i] value!
+		heapfy(a, largest); // Needs to check if i is in the proper place
 	}
 }
 
-int main() {return 0;}
+// Driver based on Figure 6.2 from Cormen. Use as input the file test_heap.txt
+
+void print() {
+	for (int i=1; i <= heap_size; i++) printf("%d ", values[i]);
+	printf("\n");
+}
+
+int main() {
+	int n;
+	scanf("%d", &n);
+
+	values = new int[n+1];
+	heap_size = 0;
+	values[0] = -1; // sentinel
+
+	for (int i=1; i <= n; i++) { scanf("%d", (values+i)); heap_size++; };
+	print();
+	heapfy(values, 2);
+	print();
+
+	delete [] values;
+	return 0;
+}
