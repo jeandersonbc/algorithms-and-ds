@@ -5,6 +5,7 @@
 *.slo
 *.lo
 *.o
+*.exe
 
 # Compiled Dynamic libraries
 *.so
