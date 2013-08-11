@@ -134,7 +134,7 @@ int main() {
 	build(a, n);
 	print(a);
 
-	// Testing Build heap
+	// Testing heapsort
 	printf("Sorting the following heap: ");
 	print(values);
 	heapsort(values, n);
