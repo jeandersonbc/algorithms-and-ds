@@ -24,8 +24,7 @@
  */
 int length;
 int heap_size;
-// int *values; since we are using globals, it's not necessary to consider this
-// pointer
+// int *values; since we are using local pointers, this is not necessary
 
 inline int parent(int i) { return (i >> 1); }
 inline int left(int i) { return (i << 1); }
@@ -69,7 +68,7 @@ void heapfy(int *a, int i) {
  * The underlying idea is to call HEAPFY for all internal nodes.
  */
 void build(int *a, int n) {
-	heap_size = n;
+	heap_size = length = n;
 	a[0] = -1; // sentinel
 	n >>= 1;   // only iterate over non-leaves until reach the root
 	while(n >= 1) {
@@ -85,12 +84,31 @@ void build(int *a, int n) {
  *
  * Unlike the mentioned algorithms, HEAP SORT uses a DATA STRUCTURE to manage
  * information (the HEAP).
+ *
+ * The underlying idea of HEAP SORT is organizing a list of keys in a MAX-HEAP,
+ * then we exchange the ROOT with A[heap_size]. After that is just a matter of
+ * excluding the last element and calling HEAPFY to the root.
  */
+void heapsort(int *a, int n) {
+	build(a, n);
+	int i = 1;
+	while (i <= heap_size) {
+		int tmp = a[heap_size];
+		a[heap_size] = a[i];
+		a[i] = tmp;
+		
+		// this HAVE to be decreased before calling HEAPFY and AFTER swapping
+		// the values. What would happen if we decrease after calling HEAPFY?
+		heap_size--; 
+
+		heapfy(a, i);
+	}
+}
 
 
 // Driver based on Figure 6.2, 6.3 from Cormen. Use as input the file test_heap.txt
 void print(int *values) {
-	for (int i=1; i <= heap_size; i++) printf("%d ", values[i]);
+	for (int i=1; i <= length; i++) printf("%d ", values[i]);
 	printf("\n");
 }
 
@@ -114,6 +132,17 @@ int main() {
 	int *a = new int[n+1];
 	for (int i=1; i <= n; i++) { scanf("%d", (a+i)); };
 	build(a, n);
+	print(a);
+
+	// Testing Build heap
+	printf("Sorting the following heap: ");
+	print(values);
+	heapsort(values, n);
+	print(values);
+
+	printf("Sorting the following heap: ");
+	print(a);
+	heapsort(a, n);
 	print(a);
 
 	delete [] values;
