@@ -24,7 +24,8 @@
  */
 int length;
 int heap_size;
-int *values;
+// int *values; since we are using globals, it's not necessary to consider this
+// pointer
 
 inline int parent(int i) { return (i >> 1); }
 inline int left(int i) { return (i << 1); }
@@ -58,6 +59,25 @@ void heapfy(int *a, int i) {
 	}
 }
 
+/* BUILD HEAP
+ *
+ * Running time: O(n). Because it iterates over n/2 nodes and calls HEAPFY for
+ * each of them, we are attempted to say that it's an O(n * log(n)) algorithm.
+ * However, mathematical proof shows that this bound can be tighter to O(n).
+ * It's jut a matter of summations and getting a better bound.
+ *
+ * The underlying idea is to call HEAPFY for all internal nodes.
+ */
+void build(int *a, int n) {
+	heap_size = n;
+	a[0] = -1; // sentinel
+	n >>= 1;   // only iterate over non-leaves until reach the root
+	while(n >= 1) {
+		heapfy(a, n);
+		n--;
+	}
+}
+
 /* TODO Heap Sort
  *
  * Like INSERTION SORT, it's a in-place sorting algorithm
@@ -68,9 +88,8 @@ void heapfy(int *a, int i) {
  */
 
 
-// Driver based on Figure 6.2 from Cormen. Use as input the file test_heap.txt
-
-void print() {
+// Driver based on Figure 6.2, 6.3 from Cormen. Use as input the file test_heap.txt
+void print(int *values) {
 	for (int i=1; i <= heap_size; i++) printf("%d ", values[i]);
 	printf("\n");
 }
@@ -80,17 +99,25 @@ int main() {
 	scanf("%d", &n);
 
 	// heap initialization
-	values = new int[n+1];
+	int *values = new int[n+1];
 	heap_size = 0;
 	length = n;
 	values[0] = -1; // sentinel
 
 	// inserting elements
 	for (int i=1; i <= n; i++) { scanf("%d", (values+i)); heap_size++; };
-	print();
 	heapfy(values, 2);
-	print();
+	print(values);
+
+	// Testing build heap
+	scanf("%d", &n);
+	int *a = new int[n+1];
+	for (int i=1; i <= n; i++) { scanf("%d", (a+i)); };
+	build(a, n);
+	print(a);
 
 	delete [] values;
+	delete [] a;
+
 	return 0;
 }
