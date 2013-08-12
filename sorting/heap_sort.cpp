@@ -77,7 +77,7 @@ void build(int *a, int n) {
 	}
 }
 
-/* TODO Heap Sort
+/* Heap Sort
  *
  * Like INSERTION SORT, it's a in-place sorting algorithm
  * Like MERGE SORT, it's a linear-logarithmic sorting O(n * log(n))
