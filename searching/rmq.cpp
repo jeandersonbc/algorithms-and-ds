@@ -10,8 +10,6 @@
  *
  * OUTPUT:
  *     MINIMUM VALUE of the given range (other versions may consider the index of the minimum value)
- *
- * Therefore, the interface for this problem would be something like "int rmq(int *values, int i, int j)"
  */ 
 
 /**
@@ -49,5 +47,50 @@ int rmq(int *values, int i, int j) {
  *
  *     T = {min(A[0..N-1]), min(A[0..(N-1)/2]), min(A[(N-1)/2..N]), ... min(A[0]), .. min(A[N-1])}
  *
+ * Have you seen this structure before? Seems like we could use a heap-like structure for our
+ * auxiliary heap, right? Now, remember that for N leaves, we will require N*2 to represent each node in
+ * an array. Asymptoticly speaking, we are "sacrificing" memory to speed up our lookup. As mentioned
+ * before, 2 * N is all we need ( O(n) extra memory).
  */
 
+/*
+ * Because we are using a heap-like structure, we need to define the left and right children for the i-th
+ * node. The following methods return indexes corresponding to an element.
+ * For the sake of simplicity, let's assume 1 as the root our auxiliary tree. Then, we have the following:
+ */
+inline int parent(int i) {
+    return (i >> 1);
+}
+inline int right(int i) {
+    return (i << 1) + 1;
+}
+inline int left(int i) {
+    return (i << 1);
+}
+
+/*
+ * Now, we need a sub-routine to build our auxiliary tree. Inspired by the Divide and Conquer approach
+ * we come up with the following build routine:
+ */
+inline int min(int a, int b) {
+    return (a < b ? a : b);
+}
+
+/*
+ * Build routine: O(log(n));
+ */
+void build(int node, int lo, int hi, int *values, int *T) {
+    if (lo == hi) {
+        T[node] = values[lo];
+        return;
+    }
+    int mid = lo + ((hi - lo) >> 1);
+    build(left(node), lo, mid, values, T);
+    build(rigth(node), mid+1, hi, values, T);
+    T[node] = min(values[left(node)], values[right(node)]);
+}
+
+/*
+ * Nice! We know how to build our pre-processed tree to speed up our lookup procedure but how are we going
+ * to use it for queries?
+ */
