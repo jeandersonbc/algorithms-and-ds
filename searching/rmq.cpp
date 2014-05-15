@@ -56,13 +56,13 @@ int rmq(int *values, int i, int j) {
 /*
  * Because we are using a heap-like structure, we need to define the left and right children for the i-th
  * node. The following methods return indexes corresponding to an element.
- * For the sake of simplicity, let's assume 1 as the root our auxiliary tree. Then, we have the following:
+ * For the sake of simplicity, let's assume 0 as the root our auxiliary tree. Then, we have the following:
  */
 inline int parent(int i) {
     return (i >> 1);
 }
 inline int right(int i) {
-    return (i << 1) + 1;
+    return (i + 1) << 1;
 }
 inline int left(int i) {
     return (i << 1);
