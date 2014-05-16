@@ -1,17 +1,13 @@
 #include <cstdio>
+#include <algorithm>
+using namespace std;
 
-#define NIL -1
+#define INF 100
 #define MAXN 100
 
 int A[MAXN], T[MAXN*2];
 inline int left(int n) { return 2*n + 1; }
 inline int right(int n) { return 2*(n + 1); }
-
-int min(int a, int b) {
-    if (a == NIL) return b;
-    if (b == NIL) return a;
-    return a < b ? a : b;
-}
 
 void build(int n, int i, int j) {
     if (i == j) {
@@ -26,7 +22,7 @@ void build(int n, int i, int j) {
 }
 
 int query(int n, int i, int j, int a, int b) {
-    if (j < a || i > b) return NIL;
+    if (j < a || i > b) return INF;
     if (a == b) return A[a];
     if (i >= a && j <= b) return T[n];
     int mid = (i + j)/2;
