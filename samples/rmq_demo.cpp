@@ -2,6 +2,7 @@
 #include <algorithm>
 using namespace std;
 
+// Assume INF as the Max value in A plus one.
 #define INF 100
 #define MAXN 100
 
@@ -30,6 +31,10 @@ int query(int n, int i, int j, int a, int b) {
     int p2 = query(right(n), mid+1, j, a, b);
     return min(p1, p2);
 }
+void update(int x, int i, int N) {
+    A[i] = x;
+    build(0, 0, N-1);
+}
 
 int main() {
     // Dummy data
@@ -41,9 +46,18 @@ int main() {
 
     int TC, a, b;
     scanf("%d", &TC);
+    char op;
     while(TC--) {
-        scanf("%d %d", &a, &b);
-        printf("%d\n", query(0, 0, N-1, a, b));
+        scanf(" %c", &op);
+        if (op == 'u') {
+            scanf("%d %d", &a, &b);
+            update(a, b, N);
+        } else if (op == 'q') {
+            scanf("%d %d", &a, &b);
+            printf("%d\n", query(0, 0, N-1, a, b));
+        } else {
+            printf("Unknown option\n");
+        }
     }
     return 0;
 }
