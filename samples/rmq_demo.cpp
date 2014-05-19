@@ -6,7 +6,7 @@ using namespace std;
 #define INF 100
 #define MAXN 100
 
-int A[MAXN], T[MAXN*2];
+int A[MAXN], T[MAXN << 2];
 inline int left(int n) { return 2*n + 1; }
 inline int right(int n) { return 2*(n + 1); }
 
