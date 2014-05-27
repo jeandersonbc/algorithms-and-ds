@@ -1,4 +1,4 @@
-Data Structures and Algorithms in C++
+Algorithms and Data Structures
 ==============================
 
 I'm reviewing some of my text books that I've been using to learn data structures and algorithms.
