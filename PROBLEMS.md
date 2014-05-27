@@ -19,5 +19,14 @@ A[j])* such that *A[i] > A[j]*.
 ## The Searching Problem
 
 Given a list of values A and a target T, return the index of T in A or NIL if A
-doesn't contains T
+does not contains T
 * Cormen: Exercise 2.1.3
+
+## The Range Minimum/Maximum Query (RMQ) probrem
+
+Given a range [i, j] and M queries, return the maximum (or minimum) element within the given range.
+Segment Tree is a useful data structure to solve this problem efficiently. It allows to perform
+queries in O(log(n)) time. Therefore, for M queries, the solution is O(M * log(n)).
+
+## Dynamic Programming with Bitmask
+
