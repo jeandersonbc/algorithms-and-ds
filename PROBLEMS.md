@@ -15,12 +15,17 @@ A[j])* such that *A[i] > A[j]*.
 * Subproblem of the Sorting problem.
 * Cormen: Problem 2-4
 
-
 ## The Searching Problem
 
 Given a list of values A and a target T, return the index of T in A or NIL if A
 does not contains T
 * Cormen: Exercise 2.1.3
+
+## The Maximum-Subarray Problem
+
+Given an array A of integers, and the operation sum(A, i, j) which sums all values in the range
+A[i..j], find the maximum subarray i.e. an i and j such that sum(A, i, j) is the maximum value.
+* Cormen: Divide-and-Conquer algorithms
 
 ## The Range Minimum/Maximum Query (RMQ) probrem
 
