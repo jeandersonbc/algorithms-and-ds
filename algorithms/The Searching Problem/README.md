@@ -11,4 +11,4 @@ An index i such that V = A[i] or NIL if V doesn’t exist in A
 * f(A, V) = 2 (considering 0 as the first index)
  
 ##Reference##
-* TCRC 3rd Edition - Problem 2.1-3
+* CLRS 3rd Edition - Problem 2.1-3
