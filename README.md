@@ -1,5 +1,9 @@
+Welcome to the *out-dated* content of this repository!
+======================================================
+What are you doing here, anyways? :-)
+
 Algorithms and Data Structures
-==============================
+------------------------------
 
 I'm reviewing some of my text books that I've been using to learn data structures and algorithms.
 
