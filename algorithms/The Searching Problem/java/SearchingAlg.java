@@ -3,8 +3,9 @@ import java.util.List;
 /**
  * Interface for the Searching problem.
  * @author Jeanderson Candido - http://jeandersonbc.github.io
+ * @param T - The type of the element to be searched
  */
-interface SearchingAlg<T> {
+public interface SearchingAlg<T> {
 
     final int NIL = -1;
 
