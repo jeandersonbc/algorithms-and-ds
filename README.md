@@ -1,6 +1,9 @@
 Algorithms and Data Structures
 ==============================
 
+*"With advanced libraries and languages, you can accomplish some tasks without knowing Algorithms and Data Structures, but you can do much more with such knowledge. This is the bound between programmers and novices."* (Robert Sedgewick - Algorithms Part 1)
+
+
 ##References##
 * Books
 
