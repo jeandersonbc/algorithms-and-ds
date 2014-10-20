@@ -5,7 +5,7 @@ Algorithms and Data Structures
 * Books
 
   * [Introduction to Algorithms 3rd Edition]() - Cormen *et. al.* (aka CLRS)
-  * [Algorithms 4th Edition]() - Robert Sedgewick and Kevin Wayne
+  * [Algorithms 4th Edition]() - Robert Sedgewick and Kevin Wayne (SW)
 
 * Online Classes
 
@@ -13,6 +13,6 @@ Algorithms and Data Structures
     * [Algorithms: Design and Analysis, Part 1](https://www.coursera.org/course/algo)
     * [Algorithms: Design and Analysis, Part 2](https://www.coursera.org/course/algo2)
 
-  * Princenton University (by Robert Sedgewick)
+  * Princenton University (by R. Sedgewick and K. Wayne)
     * [Algorithms Part 1](https://www.coursera.org/course/algs4partI)
     * [Algorithms Part 2](https://www.coursera.org/course/algs4partII)
