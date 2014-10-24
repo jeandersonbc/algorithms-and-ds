@@ -22,26 +22,42 @@ import java.util.List;
 
 public class NaiveSolution implements MaxSubArrayFinder {
 
-    private List<Integer> values;
+    private int left;
+    private int right;
+    private int sum;
 
     public NaiveSolution(List<Integer> values) { 
         if (values == null)
             throw new java.lang.IllegalArgumentException("Parameter values should not be null");
 
-        this.values = values;
+        solve(values);
     }
-
-    // TODO Finish this
-
+    private void solve(List<Integer> values) {
+        this.sum= values.get(0);
+        for (int i = 0; i < values.size(); i++) {
+            int maxTmp = values.get(i);
+            for (int j = i + 1; j < values.size(); j++) {
+                maxTmp += values.get(j);
+                if (maxTmp > this.sum) {
+                    this.sum= maxTmp;
+                    this.right = j;
+                    this.left = i;
+                }
+            }
+        }
+    }
     @Override
-    public int getMaxSum() { return 0; }
-
+    public int getMaxSum() {
+        return this.sum;
+    }
     @Override
-    public int getRight() { return 0; }
-
+    public int getRight() {
+        return this.right;
+    }
     @Override
-    public int getLeft() { return 0; }
-
+    public int getLeft() {
+        return this.left;
+    }
     // Sanity check
     public static void main(String[] args) {
         List<Integer> values = java.util.Arrays.asList(
