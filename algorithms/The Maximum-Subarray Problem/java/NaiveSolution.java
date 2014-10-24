@@ -32,6 +32,12 @@ public class NaiveSolution implements MaxSubArrayFinder {
 
         solve(values);
     }
+    /**
+     * This solution tests every single possible subarray A[i..j] for i less than
+     * or equals to j. Therefore, it is not difficult to see that we have a solution bounded
+     * by N squared. More strictly, it would not be exactly N squared because as i increases,
+     * j decreases but it is okay since we are talking about BigOh-notation.
+     */
     private void solve(List<Integer> values) {
         this.sum= values.get(0);
         for (int i = 0; i < values.size(); i++) {
