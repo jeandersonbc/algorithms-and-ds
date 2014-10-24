@@ -21,8 +21,19 @@
 import java.util.List;
 
 public interface MaxSubArrayFinder {
-    void setValues(List<Integer> values);
+
+    /**
+     * Returns the maximum sum from the maximum-subarray within values
+     */
     int getMaxSum();
+
+    /**
+     * Returns the last index of the maximum-subarray within values
+     */
     int getRight();
+
+    /**
+     * Returns the first index of the maximum-subarray within values
+     */
     int getLeft();
 }
