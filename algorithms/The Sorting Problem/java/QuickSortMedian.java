@@ -29,7 +29,7 @@ import java.util.List;
  * select the median element. This variation reduces the number of comparisons
  * and improves performance.
  */
-public class MedianQuickSort<T extends Comparable<T>> implements SortingAlg<T> {
+public class QuickSortMedian<T extends Comparable<T>> implements SortingAlg<T> {
 
     @Override
     public void sort(List<T> elements) {

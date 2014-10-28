@@ -20,8 +20,11 @@
  */
 import java.lang.Comparable;
 import java.util.List;
+import java.util.Random;
 
-public class ClassicQuickSort<T extends Comparable<T>> implements SortingAlg<T> {
+public class QuickSortRandomized<T extends Comparable<T>> implements SortingAlg<T> {
+
+    private static Random rand = new Random();
 
     @Override
     public void sort(List<T> elements) {
@@ -36,8 +39,16 @@ public class ClassicQuickSort<T extends Comparable<T>> implements SortingAlg<T> 
             sort(elements, p+1, right);
         }
     }
+    // Similar to the Classic partitioning algorithm.
+    // Randomly chooses the pivot and swap it with the rightmost element.
     private int partition(List<T> elements, int left, int right) {
-        T pivot = elements.get(right);
+        int pivotIndex = rand.nextInt(right + 1 - left) + left;
+        T pivot = elements.get(pivotIndex);
+
+        T temp = elements.get(right);
+        elements.set(right, pivot);
+        elements.set(pivotIndex, temp);
+
         int i = left - 1;
         for (int j = left; j < right; j++) {
             if (isLessThan(elements.get(j), pivot)) {
@@ -46,7 +57,7 @@ public class ClassicQuickSort<T extends Comparable<T>> implements SortingAlg<T> 
                 elements.set(j, greater);
             }
         }
-        T temp = elements.get(i + 1);
+        temp = elements.get(i + 1);
         elements.set(i + 1, pivot);
         elements.set(right, temp);
 
@@ -58,7 +69,7 @@ public class ClassicQuickSort<T extends Comparable<T>> implements SortingAlg<T> 
 
     // Simple driver
     public static void main(String[] args) {
-        SortingAlg<Integer> alg = new ClassicQuickSort<Integer>();
+        SortingAlg<Integer> alg = new QuickSortRandomized<Integer>();
         List<Integer> elems = java.util.Arrays.asList(9,5,2,7,3,8,2,1,4,7,5,3,9);
         alg.sort(elems);
         for (int i = 0; i < elems.size() - 1; i++) {
@@ -69,4 +80,5 @@ public class ClassicQuickSort<T extends Comparable<T>> implements SortingAlg<T> 
         System.out.println("All tests passed.");
     }
 }
+
 
