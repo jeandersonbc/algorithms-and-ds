@@ -13,7 +13,7 @@ class Main {
      */
     static class StackFixedSize<E> {
         private Object[] elements;
-        private int top;
+        private int top; // This index holds the position of the next element to be removed
 
         StackFixedSize(int initialCapacity) {
             if (initialCapacity < 1)
