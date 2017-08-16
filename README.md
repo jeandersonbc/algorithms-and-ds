@@ -3,7 +3,7 @@ Algorithms and Data Structures
 
 *"With advanced libraries and languages, you can accomplish some tasks without knowing Algorithms and Data Structures, but you can do much more with such knowledge. This is the bound between programmers and novices."* (Robert Sedgewick - Algorithms Part 1)
 
-##About##
+## About
 I created this repository to practice more the subject. As I'm studying, I implement problems and algorithms and push them here.
 
 Algorithms are organized by subjects (e.g. Searching, Sorting, etc...). For each problem, I create a common interface and have
@@ -13,7 +13,7 @@ the art of computer programming.
 
 I hope you find the information here useful for you.
 
-##Contributing##
+## Contributing
 I decided to put my code here for a reason: Learning is more fun when we work together, right? Contributions are always
 welcomed. Please, if you find anything wrong (e.g. bugs or wrong information), consider the following steps:
 
@@ -23,7 +23,7 @@ welcomed. Please, if you find anything wrong (e.g. bugs or wrong information), c
 4. Add your name on the Copyright header of each modified file
 5. Submit a pull request (details [here](https://help.github.com/articles/using-pull-requests/#sending-the-pull-request))
 
-###Guidelines###
+### Guidelines
 
 * Tab x Space:
   * Please, consider replacing tabs for blank spaces.
