@@ -23,6 +23,43 @@ class Main {
             return String.format("%s - %d", getPlayer(), getScore());
         }
     }
+    static class Scoreboard {
+        private GameEntry[] scores;
+        private int entries;
+        public Scoreboard(int capacity) {
+            this.scores = new GameEntry[capacity];
+            this.entries = 0;
+        }
+        public void insert(GameEntry entry) {
+            if (this.entries == 0) {
+                this.scores[this.entries] = entry;
+                this.entries++;
+                return;
+            }
+            if (this.entries == this.scores.length) {
+                if (this.scores[this.entries - 1].getScore() > entry.getScore())
+                    return;
+                this.entries--;
+            }
+            int position = this.entries - 1;
+            while (position >= 0 && this.scores[position].getScore() < entry.getScore()) {
+                this.scores[position + 1] = this.scores[position];
+                position--;
+            }
+            this.scores[position + 1] = entry;
+            this.entries++;
+        }
+        @Override
+        public String toString() {
+            StringBuilder str = new StringBuilder("Scoreboard\n");
+            GameEntry entry = null;
+            for (int i = 0; i < this.entries; i++) {
+                entry = this.scores[i];
+                str.append(String.format("%3d - %s\n", entry.getScore(), entry.getPlayer()));
+            }
+            return str.toString();
+        }
+    }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(new BufferedInputStream(System.in));
@@ -31,11 +68,12 @@ class Main {
             int capacity = in.nextInt();
             int entries = in.nextInt();
 
+            Scoreboard scoreboard = new Scoreboard(capacity);
             for (int e = 0; e < entries; e++) {
                 String player = in.next();
                 int score = in.nextInt();
-                GameEntry entry = new GameEntry(player, score);
-                System.out.println(entry);
+                scoreboard.insert(new GameEntry(player, score));
+                System.out.println(scoreboard);
             }
         }
         in.close();
