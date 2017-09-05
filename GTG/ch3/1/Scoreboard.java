@@ -31,23 +31,17 @@ class Main {
             this.entries = 0;
         }
         public void insert(GameEntry entry) {
-            if (this.entries == 0) {
-                this.scores[this.entries] = entry;
-                this.entries++;
-                return;
+            int newScore = entry.getScore();
+            if (entries < scores.length || newScore > scores[scores.length - 1].getScore()) {
+                if (entries < scores.length)
+                    entries++;
+                int pos = entries - 1;
+                while (pos > 0 && newScore > scores[pos - 1].getScore()) {
+                    scores[pos - 1] = scores[pos];
+                    pos--;
+                }
+                scores[pos] = entry;
             }
-            if (this.entries == this.scores.length) {
-                if (this.scores[this.entries - 1].getScore() > entry.getScore())
-                    return;
-                this.entries--;
-            }
-            int position = this.entries - 1;
-            while (position >= 0 && this.scores[position].getScore() < entry.getScore()) {
-                this.scores[position + 1] = this.scores[position];
-                position--;
-            }
-            this.scores[position + 1] = entry;
-            this.entries++;
         }
         @Override
         public String toString() {
