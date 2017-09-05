@@ -1,0 +1,9 @@
+1
+5 7
+Jon 100
+Aegon 200
+Tyrion 220
+Sansa 20
+Littlefinger 50
+Ned 80
+Jamie 50
