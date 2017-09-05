@@ -70,9 +70,12 @@ class Main {
 
             Scoreboard scoreboard = new Scoreboard(capacity);
             for (int e = 0; e < entries; e++) {
-                String player = in.next();
-                int score = in.nextInt();
-                scoreboard.insert(new GameEntry(player, score));
+                String op = in.next();
+                if ("+".equals(op)) {
+                    String player = in.next();
+                    int score = in.nextInt();
+                    scoreboard.insert(new GameEntry(player, score));
+                }
                 System.out.println(scoreboard);
             }
         }

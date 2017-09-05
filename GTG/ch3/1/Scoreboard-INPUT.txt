@@ -1,11 +1,10 @@
 1
-5 9
-Jon 100
-Aegon 200
-Tyrion 220
-Sansa 20
-Littlefinger 50
-Ned 80
-Jamie 50
-Me 50
-Ayra 999 
+5 8
++ Jon 100
++ Aegon 200
++ Tyrion 220
++ Sansa 20
++ Littlefinger 50
++ Ned 80
++ Jamie 50
++ Me 50
