@@ -37,10 +37,17 @@ class Main {
                     entries++;
                 int pos = entries - 1;
                 while (pos > 0 && newScore > scores[pos - 1].getScore()) {
-                    scores[pos - 1] = scores[pos];
+                    scores[pos] = scores[pos - 1];
                     pos--;
                 }
                 scores[pos] = entry;
+            }
+        }
+        public void remove(int i) {
+            if (i > 0 && i <= entries) {
+                for (int pos = i; pos < entries; pos++)
+                    scores[pos - 1] = scores[pos];
+                scores[--entries] = null;
             }
         }
         @Override
@@ -69,6 +76,8 @@ class Main {
                     String player = in.next();
                     int score = in.nextInt();
                     scoreboard.insert(new GameEntry(player, score));
+                } else if ("-".equals(op)) {
+                    scoreboard.remove(in.nextInt());
                 }
                 System.out.println(scoreboard);
             }
