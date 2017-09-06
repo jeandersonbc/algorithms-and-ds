@@ -43,12 +43,16 @@ class Main {
                 scores[pos] = entry;
             }
         }
-        public void remove(int i) {
+        // Elements are indexed by one
+        public GameEntry remove(int i) {
+            GameEntry removed = null;
             if (i > 0 && i <= entries) {
+                removed = scores[i - 1];
                 for (int pos = i; pos < entries; pos++)
                     scores[pos - 1] = scores[pos];
                 scores[--entries] = null;
             }
+            return removed;
         }
         @Override
         public String toString() {
@@ -77,7 +81,7 @@ class Main {
                     int score = in.nextInt();
                     scoreboard.insert(new GameEntry(player, score));
                 } else if ("-".equals(op)) {
-                    scoreboard.remove(in.nextInt());
+                    System.out.println(scoreboard.remove(in.nextInt()));
                 }
                 System.out.println(scoreboard);
             }
