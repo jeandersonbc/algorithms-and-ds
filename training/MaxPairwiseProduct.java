@@ -3,17 +3,18 @@ import java.io.*;
 
 public class MaxPairwiseProduct {
     static long getMaxPairwiseProduct(int[] numbers) {
-        long result = 0;
-        int n = numbers.length;
-        for (int i = 0; i < n; ++i) {
-            for (int j = i + 1; j < n; ++j) {
-                long current = (long) numbers[i] * numbers[j];
-                if (current  > result) {
-                    result = current;
-                }
+        int maxi = -1;
+        for (int i = 0; i < numbers.length; i++) {
+            if (maxi == -1 || numbers[maxi] < numbers[i])
+                maxi = i;
+        }
+        int maxj = -1;
+        for (int i = 0; i < numbers.length; i++) {
+            if (i != maxi && (maxj == -1 || numbers[maxj] < numbers[i])) {
+                maxj = i;
             }
         }
-        return result;
+        return (long) numbers[maxi] * numbers[maxj];
     }
 
     public static void main(String[] args) {
