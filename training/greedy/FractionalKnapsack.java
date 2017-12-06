@@ -13,7 +13,7 @@ public class FractionalKnapsack {
         }
         @Override
         public int compareTo(Item other) {
-            return other.value - this.value;
+            return this.weight - other.weight;
         }
     }
     public static void main(String[] args0) {
@@ -32,7 +32,6 @@ public class FractionalKnapsack {
         float maxProfit = 0f;
         while (!items.isEmpty()) {
             Item curr = items.remove();
-            System.out.println(curr.value + " " + curr.weight);
             if (curr.weight > remainingWeight) {
                 float fract = (float) remainingWeight / curr.weight;
                 maxProfit += fract * curr.value;
