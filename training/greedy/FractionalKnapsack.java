@@ -41,7 +41,7 @@ public class FractionalKnapsack {
                 remainingWeight -= curr.weight;
             }
         }
-        System.out.println(String.format("%.4f", maxProfit));
+        System.out.println(String.format("%.3f", maxProfit));
         sc.close();
     }
 }
