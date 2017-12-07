@@ -13,7 +13,11 @@ public class FractionalKnapsack {
         }
         @Override
         public int compareTo(Item other) {
-            return this.weight - other.weight;
+            return (int)((float)other.value / other.weight) - (int)((float)this.value / this.weight);
+        }
+        @Override
+        public String toString() {
+            return String.format("(%d, %d)", this.value, this.weight);
         }
     }
     public static void main(String[] args0) {
