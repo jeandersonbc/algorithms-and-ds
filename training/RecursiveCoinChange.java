@@ -19,20 +19,45 @@ class Main {
         }
         return minCoins;
     }
+
+    /*
+     * Is this really faster? If so, can you tell why?
+     */
+    static int faster(int value, int[] coins) {
+        int[] minCoins = new int[value + 1];
+        minCoins[0] = 0;
+        for (int currentValue = 1; currentValue <= value; currentValue++) {
+            minCoins[currentValue] = -1;
+            for (int coin : coins) {
+                if (coin <= currentValue) {
+                    int numCoins = minCoins[currentValue - coin] + 1;
+                    if (minCoins[currentValue] == -1
+                            || minCoins[currentValue] > numCoins) {
+                        minCoins[currentValue] = numCoins;
+                    }
+                }
+            }
+        }
+        return minCoins[value];
+    }
+
     public static void main(String[] args) {
         int value = 25;
         int[] coins = {5, 10, 15};
         System.out.println(value + " " + Arrays.toString(coins));
         System.out.println(solve(value, coins));
+        System.out.println(faster(value, coins));
 
         value = 40;
         coins = new int[]{5, 10, 25, 50};
         System.out.println(value + " " + Arrays.toString(coins));
         System.out.println(solve(value, coins));
+        System.out.println(faster(value, coins));
 
         value = 40;
         coins = new int[]{5, 10, 20, 25, 50};
         System.out.println(value + " " + Arrays.toString(coins));
         System.out.println(solve(value, coins));
+        System.out.println(faster(value, coins));
     }
 }
