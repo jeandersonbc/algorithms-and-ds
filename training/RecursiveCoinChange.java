@@ -7,32 +7,32 @@ class Main {
      *
      * Can you guess why? :)
      */
-    static int solve(int value, int[] coins, int total) {
-        if (value == 0) return total;
-        int answer = -1;
+    static int solve(int value, int[] coins) {
+        if (value == 0) return 0;
+        int minCoins = -1;
         for (int coin : coins) {
             if (coin <= value) {
-                int tmp = solve(value - coin, coins, total + 1);
-                if (answer == -1 || answer > tmp)
-                    answer = tmp;
+                int numCoins = solve(value - coin, coins);
+                if (minCoins == -1 || minCoins > numCoins + 1)
+                    minCoins = numCoins + 1;
             }
         }
-        return answer;
+        return minCoins;
     }
     public static void main(String[] args) {
         int value = 25;
         int[] coins = {5, 10, 15};
         System.out.println(value + " " + Arrays.toString(coins));
-        System.out.println(solve(value, coins, 0));
+        System.out.println(solve(value, coins));
 
         value = 40;
         coins = new int[]{5, 10, 25, 50};
         System.out.println(value + " " + Arrays.toString(coins));
-        System.out.println(solve(value, coins, 0));
+        System.out.println(solve(value, coins));
 
         value = 40;
         coins = new int[]{5, 10, 20, 25, 50};
         System.out.println(value + " " + Arrays.toString(coins));
-        System.out.println(solve(value, coins, 0));
+        System.out.println(solve(value, coins));
     }
 }
