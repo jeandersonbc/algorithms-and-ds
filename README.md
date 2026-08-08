@@ -1,5 +1,4 @@
-Algorithms and Data Structures
-==============================
+# Algorithms and Data Structures
 
 _"With advanced libraries and languages, you can accomplish some tasks without knowing
 Algorithms and Data Structures, but you can do much more with such knowledge. This is
@@ -19,7 +18,7 @@ corresponding implementation and further references.
 
 * Books
 
-  * [Introduction to Algorithms 3rd Edition]() - Cormen *et. al.* (aka CLRS)
+  * [Introduction to Algorithms 3rd Edition]() - Cormen _et. al._ (aka CLRS)
   * [Algorithms 4th Edition]() - Robert Sedgewick and Kevin Wayne (SW)
 
 * Online Classes
