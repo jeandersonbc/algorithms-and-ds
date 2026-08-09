@@ -54,5 +54,7 @@ public interface Queue<T> {
      *
      * @return <code>true</code> if this queue is empty
      */
-    boolean isEmpty();
+    default boolean isEmpty() {
+        return size() == 0;
+    }
 }

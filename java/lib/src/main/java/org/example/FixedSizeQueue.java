@@ -31,6 +31,9 @@ public class FixedSizeQueue<T> implements Queue<T> {
 
     @Override
     public boolean enqueue(T element) throws NullPointerException {
+        if (element == null) {
+            throw new NullPointerException();
+        }
         if (size() == capacity()) {
             return false;
         }
@@ -75,8 +78,4 @@ public class FixedSizeQueue<T> implements Queue<T> {
         return this.elements.length;
     }
 
-    @Override
-    public boolean isEmpty() {
-        return size() == 0;
-    }
 }
