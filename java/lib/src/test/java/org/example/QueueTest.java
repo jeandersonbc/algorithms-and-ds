@@ -56,4 +56,9 @@ abstract class QueueTest {
         assertTrue(queue.isEmpty());
         assertThrows(NoSuchElementException.class, queue::dequeue);
     }
+
+    @Test
+    void failsToEnqueueNullElement() {
+        assertThrows(NullPointerException.class, () -> queue.enqueue(null));
+    }
 }
