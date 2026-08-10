@@ -24,8 +24,11 @@ public class DynamicQueue<T> implements Queue<T> {
         if (element == null) {
             throw new NullPointerException();
         }
-        // TODO check size for resizing
-
+        if (size() >= capacity() * 0.75) {
+            Object[] newElements = new Object[capacity() * 2];
+            System.arraycopy(elements, 0, newElements, 0, size());
+            elements = newElements;
+        }
         this.elements[rear] = element;
         rear = (rear + 1) % capacity();
         count++;
@@ -39,8 +42,11 @@ public class DynamicQueue<T> implements Queue<T> {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
-        // TODO: check size for resizing
-
+        if (size() <= capacity() * 0.25) {
+            Object[] newElements = new Object[capacity() / 2];
+            System.arraycopy(elements, 0, newElements, 0, size());
+            elements = newElements;
+        }
         T element = (T) elements[front];
         elements[front] = null;
         count--;

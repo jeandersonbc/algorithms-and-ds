@@ -77,5 +77,4 @@ public class FixedSizeQueue<T> implements Queue<T> {
     public int capacity() {
         return this.elements.length;
     }
-
 }
